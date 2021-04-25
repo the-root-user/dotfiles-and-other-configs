@@ -1,0 +1,39 @@
+#
+##
+### Remeber! palettes are gonna be in this sense:
+##
+###  1   2   3   4   5   6   7   8
+###  9   10  11  12  13  14  15  16
+#
+##
+### Colors :
+##
+#
+## Palette entry 1 : #403E44
+## Palette entry 2 : #CD0000
+## Palette entry 3 : #27AE60
+## Palette entry 4 : #E5A50A
+## Palette entry 5 : #1E90FF #lovely blue
+## Palette entry 6 : #CD00CD
+## Palette entry 7 : #00CDCD
+## Palette entry 8 : #E5E5E5
+# end   of  first   horizontal  line
+## Palette entry 9 : #4C4C4C
+## Palette entry 10 : #ED333B
+## Palette entry 11 : #27AE59
+## Palette entry 12 : #E5E504
+## Palette entry 13 : #2882B0
+## Palette entry 14 : #FF00FF
+## Palette entry 15 : #01C9C9
+## Palette entry 16 : #FFFFFF #whiTe
+#
+##
+### Text color : #00E2B5
+## Bold color : #33D17A
+### Background color : #223445
+### Background Transparency : 85 %
+## Terminal size : 120 x 35
+#
+## Terminator Titlebar Focused (Background) : #1A7EDF
+## Terminator Titlebar Inactive (Background) : #1565B3
+#
