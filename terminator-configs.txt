@@ -1,18 +1,19 @@
 [global_config]
+  handle_size = 3
   geometry_hinting = True
-  tab_position = bottom
-  sticky = True
   title_at_bottom = True
-  title_transmit_fg_color = "#2cb978"
-  title_transmit_bg_color = "#222d33"
-  title_inactive_fg_color = "#26a269"
-  title_inactive_bg_color = "#222d33"
-  inactive_color_offset = 0.952054794520548
+  title_transmit_fg_color = "#26a269"
+  title_transmit_bg_color = "#0b0d12"
+  title_inactive_fg_color = "#228b5b"
+  title_inactive_bg_color = "#0c0e14"
+  inactive_color_offset = 0.6066666666666667
+  enabled_plugins = ActivityWatch, TerminalShot, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
   always_split_with_profile = True
   title_font = Cyrvetica 12
   putty_paste_style_source_clipboard = True
-  line_height = 1.2
+  case_sensitive = False
 [keybindings]
+  new_tab = <Primary><Shift>t
   split_horiz = <Primary>Down
   split_vert = <Primary>Right
   close_term = <Primary><Shift>e
@@ -22,13 +23,131 @@
   [[default]]
     urgent_bell = True
     background_color = "#0d1117"
-    background_darkness = 0.85
+    background_darkness = 0.97
+    background_type = transparent
+    cursor_color = "#f66151"
+    font = FuraCode Nerd Font Bold 14
+    foreground_color = "#22aa6b"
+    scrollbar_position = hidden
+    scrollback_infinite = True
+    palette = "#403e44:#fb301a:#14ba42:#e5a50a:#3d94ff:#e21e61:#00cdcd:#e5e5e5:#9a9996:#ed333b:#27ae59:#e5e504:#2882b0:#e91e63:#01c9c9:#ffffff"
+    use_system_font = False
+    copy_on_selection = True
+  [[After Dark]]
+    urgent_bell = True
+    background_color = "#10111b"
+    background_darkness = 0.96
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = DejaVuSansMono Nerd Font Bold 13
-    foreground_color = "#2aaf5b"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#2bb371"
     scrollback_infinite = True
-    palette = "#403e44:#fb301a:#27ae60:#e5a50a:#3d94ff:#e21e61:#00cdcd:#e5e5e5:#9a9996:#ed333b:#27ae59:#e5e504:#2882b0:#e91e63:#01c9c9:#ffffff"
+    palette = "#2e3436:#ef4a9e:#00d2bc:#e7ca7a:#9399fa:#ca5bcc:#86d079:#d3d7cf:#555753:#ef4a9e:#00d2bc:#e7ca7a:#9399fa:#ca5bcc:#86d079:#eeeeec"
+    use_system_font = False
+    copy_on_selection = True
+  [[Argonaut]]
+    urgent_bell = True
+    background_color = "#0e1019"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#ff0018"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#fffaf4"
+    scrollback_infinite = True
+    palette = "#232323:#ff000f:#8ce10b:#ffb900:#008df8:#6d43a6:#00d8eb:#ffffff:#444444:#ff2740:#abe15b:#ffd242:#0092ff:#9a5feb:#67fff0:#ffffff"
+    use_system_font = False
+    copy_on_selection = True
+  [[ayu]]
+    urgent_bell = True
+    background_color = "#0f1419"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#f29718"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#e6e1cf"
+    scrollback_infinite = True
+    palette = "#000000:#ff3333:#b8cc52:#e7c547:#36a3d9:#f07178:#95e6cb:#ffffff:#323232:#ff6565:#eafe84:#fff779:#68d5ff:#ffa3aa:#c7fffd:#ffffff"
+    use_system_font = False
+    copy_on_selection = True
+  [[Cai]]
+    urgent_bell = True
+    background_color = "#09111a"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#e3eef9"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#d9e6f2"
+    scrollback_infinite = True
+    palette = "#000000:#ca274d:#4dca27:#caa427:#274dca:#a427ca:#27caa4:#808080:#808080:#e98da3:#a3e98d:#e9d48d:#8da3e9:#d48de9:#8de9d4:#ffffff"
+    use_system_font = False
+    copy_on_selection = True
+  [[Candy]]
+    urgent_bell = True
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = Knack Nerd Font Bold 14
+    scrollback_infinite = True
+    palette = "#2e3436:#fa2573:#a6e32d:#fc951e:#c48dff:#fa2573:#67d9f0:#f2f2f2:#555753:#fa2573:#8ae234:#fce94f:#729fcf:#fa2573:#34e2e2:#eeeeec"
+    use_system_font = False
+    copy_on_selection = True
+  [[One dark]]
+    urgent_bell = True
+    background_color = "#1e2127"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#676c76"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#5c6370"
+    scrollback_infinite = True
+    palette = "#000000:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#abb2bf:#5c6370:#e06c75:#98c379:#d19a66:#61afef:#c678dd:#56b6c2:#fffefe"
+    use_system_font = False
+    copy_on_selection = True
+  [[Spiderman]]
+    urgent_bell = True
+    background_color = "#1b1d1e"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#2c3fff"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#e3e3e3"
+    scrollback_infinite = True
+    palette = "#1b1d1e:#e60813:#e22928:#e24756:#2c3fff:#2435db:#3256ff:#fffef6:#505354:#ff0325:#ff3338:#fe3a35:#1d50ff:#747cff:#6184ff:#fffff9"
+    use_system_font = False
+    copy_on_selection = True
+  [[Thayer Bright]]
+    urgent_bell = True
+    background_color = "#1b1d1e"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#fc971f"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#f8f8f8"
+    scrollback_infinite = True
+    palette = "#1b1d1e:#f92672:#4df840:#f4fd22:#2757d6:#8c54fe:#38c8b5:#ccccc6:#505354:#ff5995:#b6e354:#feed6c:#3f78ff:#9e6ffe:#23cfd5:#f8f8f2"
+    use_system_font = False
+    copy_on_selection = True
+  [[WarmNeon]]
+    urgent_bell = True
+    background_color = "#404040"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#30ff24"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#afdab6"
+    scrollback_infinite = True
+    palette = "#000000:#e24346:#39b13a:#dae145:#4261c5:#f920fb:#2abbd4:#d0b8a3:#fefcfc:#e97071:#9cc090:#ddda7a:#7b91d6:#f674ba:#5ed1e5:#d8c8bb"
+    use_system_font = False
+    copy_on_selection = True
+  [[Ubuntu]]
+    urgent_bell = True
+    background_color = "#300a24"
+    background_darkness = 0.96
+    background_type = transparent
+    cursor_color = "#bbbbbb"
+    font = Knack Nerd Font Bold 14
+    foreground_color = "#eeeeec"
+    scrollback_infinite = True
     use_system_font = False
     copy_on_selection = True
 [layouts]
@@ -36,6 +155,7 @@
     [[[window0]]]
       type = Window
       parent = ""
+      size = 958, 581
     [[[child1]]]
       type = Terminal
       parent = window0

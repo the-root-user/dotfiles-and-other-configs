@@ -1,0 +1,9 @@
+
+[*] Colors
+
+  [*] Dark Colors
+    Github : #0D1117
+  [*] Beautiful HTB
+    Bg : #111927
+    Fg : #929EB9
+

@@ -1,0 +1,98 @@
+# Export $PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:~/.cargo/bin:~/go/bin:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+# some vars
+#_newline=$'\n'
+#_lineup=$'\e[1A'
+#_linedown=$'\e[1B'
+# COM= $(if [ $? = 0 ];then echo -e '✘' ; fi)
+# Prompt
+PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[%f%F{blue}%f%F{black}!%f%F{blue}$USER%f%F{yellow}%f%F{magenta}%m%f%F{red}]─[%f%F{blue}ﱮ%d%f%F{red}]─[%f%F{green}%f%F{red}]"$'\n'"%f%F{red}└""%f%F{red}─╼ %f%F{yellow}$%f"
+# looks nice with black 
+
+#PROMPT="%f%F{cyan}[%D{ %l:%M:%S %p }]"
+#RPROMPT=${_lineup}"%f%F{cyan}[%D{ %L:%M:%S %p }]"${_linedown}
+#PROMPT+=${_newline}"%F{red}└─╼%f%F{yellow}$%f "
+# For right side RPROMPT="[%D{%y/%m/%f}|%@]"
+# %t %@   for time in 12-hour, am/pm format
+# %*   for time in 24-hour format, with seconds.
+# for battery status '$(batstat)'
+# supported colors : red, blue, green, cyan, yellow, magenta, black, & white
+
+# Show cross upon unsuccessful execution
+# $(if [ ${?} == 0 ];then echo -e "\033[32m ✔ "; else echo -e "\033[31m ✘ "; fi)
+# if [ $? != 0 ];then echo -e "\033[31m ✘ ";fi
+
+# zsh's time uses the TIMEFMT variable to control the format. By default, this is %J %U user %S system %P cpu %*E total
+# and produces like so : sleep 2 0.00s user 0.00s system 0% cpu 2.002 total
+# Greeting
+figlet " Parrot OS" | lolcat -8S 16
+if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -e "\033[34m   Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -e "\033[35m   Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -e "\033[37m   Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -e "\033[33m  滛 After Noon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -e "\033[35m  滋 Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -e "\033[34m   Night $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -e "\033[34m  望 Late Night $USER "; fi #    滛 滋  望 歹 摒 敖 履
+#date "+    %l:%M %p"
+# alias
+alias ls='ls -h --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# some more aliases
+alias ll='ls -lh'
+alias la='ls -hA'
+alias l='ls -CF'
+alias lc='colorls'
+alias em='emacs -nw'
+alias dd='dd status=progress'
+alias _='sudo'
+alias _i='sudo -i'
+alias please='sudo'
+alias fucking='sudo'
+alias tree='tree -C'
+# get coloured man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+#####################################################
+# Auto completion / suggestion
+# Mixing zsh-autocomplete and zsh-autosuggestions
+# Requires: zsh-autocomplete (custom packaging by Parrot Team)
+# Jobs: suggest files / foldername / histsory bellow the prompt
+# Requires: zsh-autosuggestions (packaging by Debian Team)
+# Jobs: Fish-like suggestion for command history
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# Select all suggestion instead of top on result only
+zstyle ':autocomplete:tab:*' insert-unambiguous yes
+zstyle ':autocomplete:tab:*' widget-style menu-select
+zstyle ':autocomplete:*' min-input 2
+bindkey $key[Up] up-line-or-history
+bindkey $key[Down] down-line-or-history
+
+
+##################################################
+# Fish like syntax highlighting
+# Requires "zsh-syntax-highlighting" from apt
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Save type history for completion and easier life
+HISTFILE=~/.zsh_history
+HISTSIZE=20000
+SAVEHIST=20000
+setopt appendhistory
+
+# Useful alias for benchmarking programs
+# require install package "time" sudo apt install time
+# alias time="/usr/bin/time -f '\t%E real,\t%U user,\t%S sys,\t%K amem,\t%M mmem'"
+# Display last command interminal
+echo -en "\e]2;Parrot Terminal\a"
+preexec () { print -Pn "\e]0;$1 - Parrot Terminal\a" }
+
+# GoLang
+export GOROOT=/home/uf4q/.go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/home/uf4q/go
+export PATH=$GOPATH/bin:$PATH
