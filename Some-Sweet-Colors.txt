@@ -4,6 +4,7 @@
   [*] Dark Colors
     Github : #0D1117
   [*] Beautiful HTB
-    Bg : #111927
-    Fg : #929EB9
-
+    Bg-deep : #111927
+    Fg : #212529
+    Text-Bg : #929EB9
+    Text-Fg : #9fef00

@@ -9,7 +9,7 @@
   inactive_color_offset = 0.6066666666666667
   enabled_plugins = ActivityWatch, TerminalShot, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
   always_split_with_profile = True
-  title_font = Cyrvetica 12
+  title_font = Roboto Slab 12
   putty_paste_style_source_clipboard = True
   case_sensitive = False
 [keybindings]
@@ -21,18 +21,20 @@
   preferences = <Primary>p
 [profiles]
   [[default]]
+    allow_bold = False
     urgent_bell = True
     background_color = "#0d1117"
-    background_darkness = 0.97
+    background_darkness = 0.98
     background_type = transparent
     cursor_color = "#f66151"
-    font = FuraCode Nerd Font Bold 14
+    font = FuraMonoForPowerline Nerd Font Bold 13
     foreground_color = "#22aa6b"
     scrollbar_position = hidden
     scrollback_infinite = True
-    palette = "#403e44:#fb301a:#14ba42:#e5a50a:#3d94ff:#e21e61:#00cdcd:#e5e5e5:#9a9996:#ed333b:#27ae59:#e5e504:#2882b0:#e91e63:#01c9c9:#ffffff"
+    palette = "#403e44:#fb301a:#14ba42:#e5a50a:#3c95ff:#ea2065:#02bdc9:#e5e5e5:#9a9996:#ed333b:#27ae59:#e5e504:#2889ba:#e91e63:#01c9c9:#ffffff"
     use_system_font = False
     copy_on_selection = True
+    background_image = /home/uf4q/Downloads/dorin-vancea-kKDPBa5GmT4-unsplash.jpg
   [[After Dark]]
     urgent_bell = True
     background_color = "#10111b"

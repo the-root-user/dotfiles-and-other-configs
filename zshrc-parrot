@@ -6,7 +6,7 @@ export PATH=/usr/local/bin:/usr/bin:/bin:~/.cargo/bin:~/go/bin:~/.local/bin:/sna
 #_linedown=$'\e[1B'
 # COM= $(if [ $? = 0 ];then echo -e '✘' ; fi)
 # Prompt
-PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[%f%F{blue}%f%F{black}!%f%F{blue}$USER%f%F{yellow}%f%F{magenta}%m%f%F{red}]─[%f%F{blue}ﱮ%d%f%F{red}]─[%f%F{green}%f%F{red}]"$'\n'"%f%F{red}└""%f%F{red}─╼ %f%F{yellow}$%f"
+PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[%f%F{blue}$USER%f%F{yellow}㉿%f%F{magenta}%m%f%F{red}]─[%f%F{blue}ﱮ%d%f%F{red}]"$'\n'"%f%F{red}└""%f%F{red}─╼ %f%F{yellow}$%f"
 # looks nice with black 
 
 #PROMPT="%f%F{cyan}[%D{ %l:%M:%S %p }]"
@@ -24,10 +24,23 @@ PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[%f%F{blue}%f%F{black}
 
 # zsh's time uses the TIMEFMT variable to control the format. By default, this is %J %U user %S system %P cpu %*E total
 # and produces like so : sleep 2 0.00s user 0.00s system 0% cpu 2.002 total
+
 # Greeting
+greet(){
+	if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -e "\033[34m   Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -e "\033[35m   Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -e "\033[37m   Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -e "\033[33m  滛 After Noon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -e "\033[35m  滋 Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -e "\033[34m   Night $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -e "\033[34m  望 Late Night $USER "; fi #    滛 滋  望 歹 摒 敖 履
+	#date "+    %l:%M %p"
+}
+greet2(){
+	if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -ne "\033[34m  Its Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -ne "\033[35m  Morning  $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -ne "\033[37m  Its Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -ne "\033[33m 滛LateNoon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -ne "\033[35m 滋Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -ne "\033[34m  ItsNight $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -ne "\033[34m 望LateNight $USER "; fi #    滛 滋  望 歹 摒 敖 履
+	#date "+    %l:%M %p"
+}
+
 figlet " Parrot OS" | lolcat -8S 16
-if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -e "\033[34m   Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -e "\033[35m   Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -e "\033[37m   Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -e "\033[33m  滛 After Noon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -e "\033[35m  滋 Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -e "\033[34m   Night $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -e "\033[34m  望 Late Night $USER "; fi #    滛 滋  望 歹 摒 敖 履
-#date "+    %l:%M %p"
+#greet2
+echo -en "─[$(greet2)"
+# echo "]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ $(date) ]──" | lolcat -F 0.1
+echo "]───────────────────(^-^)────────────────────[ $(date) ]──" | lolcat -F 0.1
+#echo "--------------------------------------------------------------------------------------------------------------------------------------"______________________________________________________________________________________________________________________________________"──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"
 # alias
 alias ls='ls -h --color=auto'
 alias dir='dir --color=auto'
@@ -96,3 +109,13 @@ export GOROOT=/home/uf4q/.go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=/home/uf4q/go
 export PATH=$GOPATH/bin:$PATH
+
+# Golang vars
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+
+# Golang vars
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH

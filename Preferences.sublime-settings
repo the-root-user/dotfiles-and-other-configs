@@ -1,0 +1,19 @@
+// Place this file here .config/sublime-text/Packages/User/Preferences.sublime-settings
+{
+	"font_size": 13,
+	"word_wrap": true,
+	"highlight_line": true,
+	"auto_hide_menu": true,
+	"show_encoding": true,
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "Material-Theme-Palenight.sublime-theme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Palenight.tmTheme",
+	"added_words":
+	[
+		"wordpress"
+	],
+	"dictionary": "Packages/Language - English/en_US.dic",
+}
