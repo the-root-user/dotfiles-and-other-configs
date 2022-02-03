@@ -5,8 +5,23 @@ export PATH=/usr/local/bin:/usr/bin:/bin:~/.cargo/bin:~/go/bin:~/.local/bin:/sna
 #_lineup=$'\e[1A'
 #_linedown=$'\e[1B'
 # COM= $(if [ $? = 0 ];then echo -e '✘' ; fi)
+
 # Prompt
-PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[%f%F{blue}$USER%f%F{yellow}㉿%f%F{magenta}%m%f%F{red}]─[%f%F{blue}ﱮ%d%f%F{red}]"$'\n'"%f%F{red}└""%f%F{red}─╼ %f%F{yellow}$%f"
+prompt_symbol=%f%F{cyan}㉿
+symbol=%f%F{cyan}$
+if [ "$EUID" -eq 0 ]; then prompt_symbol=%f%F{red}㉿; symbol=%f%F{red}#; fi
+user_name=%f%F{blue}$USER
+if [ "$USER" = "root" ]; then user_name=%f%F{white}root; fi
+PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"$'\n'"%f%F{red}└""%f%F{red}─╼ $symbol%f"
+# Prompt
+# prompt_symbol=%f%F{cyan}㉿
+# symbol=%f%F{cyan}$
+# if [ "$EUID" -eq 0 ]; then prompt_symbol=%f%F{red}㉿; symbol=%f%F{red}#; fi
+# user_name=%f%F{blue}$USER
+# if [ "$USER" = "root" ]; then user_name=%f%F{white}root; fi
+# execution_status=%f%F{green}✔
+# if [ "$(echo $?)" -ne 0 ]; then execution_status=%f%F{red}✘; fi
+# PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"$'\n'"%f%F{red}└(""$execution_status""%f%F{red})─╼ $symbol%f"
 # looks nice with black 
 
 #PROMPT="%f%F{cyan}[%D{ %l:%M:%S %p }]"
@@ -24,7 +39,7 @@ PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[%f%F{blue}$USER%f%F{yell
 
 # zsh's time uses the TIMEFMT variable to control the format. By default, this is %J %U user %S system %P cpu %*E total
 # and produces like so : sleep 2 0.00s user 0.00s system 0% cpu 2.002 total
-
+true_greet(){
 # Greeting
 greet(){
 	if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -e "\033[34m   Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -e "\033[35m   Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -e "\033[37m   Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -e "\033[33m  滛 After Noon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -e "\033[35m  滋 Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -e "\033[34m   Night $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -e "\033[34m  望 Late Night $USER "; fi #    滛 滋  望 歹 摒 敖 履
@@ -34,16 +49,19 @@ greet2(){
 	if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -ne "\033[34m  Its Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -ne "\033[35m  Morning  $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -ne "\033[37m  Its Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -ne "\033[33m 滛LateNoon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -ne "\033[35m 滋Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -ne "\033[34m  ItsNight $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -ne "\033[34m 望LateNight $USER "; fi #    滛 滋  望 歹 摒 敖 履
 	#date "+    %l:%M %p"
 }
-
 figlet " Parrot OS" | lolcat -8S 16
 #greet2
 echo -en "─[$(greet2)"
 # echo "]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ $(date) ]──" | lolcat -F 0.1
 echo "]───────────────────(^-^)────────────────────[ $(date) ]──" | lolcat -F 0.1
 #echo "--------------------------------------------------------------------------------------------------------------------------------------"______________________________________________________________________________________________________________________________________"──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"
+}
+true_greet
 # alias
 alias ls='ls -h --color=auto'
+alias ip='ip --color=auto'
 alias dir='dir --color=auto'
+alias diff='diff --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -53,13 +71,16 @@ alias ll='ls -lh'
 alias la='ls -hA'
 alias l='ls -CF'
 alias lc='colorls'
+alias clear='clear && true_greet'
 alias em='emacs -nw'
 alias dd='dd status=progress'
 alias _='sudo'
 alias _i='sudo -i'
 alias please='sudo'
 alias fucking='sudo'
-alias tree='tree -C'
+alias history='history 0'
+alias tree='tree -hC'
+alias bat='batcat'
 # get coloured man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -78,10 +99,27 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # Jobs: Fish-like suggestion for command history
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-# Select all suggestion instead of top on result only
-zstyle ':autocomplete:tab:*' insert-unambiguous yes
+# Use modern completion system
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+#zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
-zstyle ':autocomplete:*' min-input 2
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 bindkey $key[Up] up-line-or-history
 bindkey $key[Down] down-line-or-history
 
@@ -104,6 +142,17 @@ setopt appendhistory
 echo -en "\e]2;Parrot Terminal\a"
 preexec () { print -Pn "\e]0;$1 - Parrot Terminal\a" }
 
+# This script will look-up command in the database and suggest
+# installation of packages available from the repository
+#if [[ -x /usr/lib/command-not-found ]] ; then
+#        if (( ! ${+functions[command_not_found_handler]} )) ; then
+#                function command_not_found_handler {
+#                        [[ -x /usr/lib/command-not-found ]] || return 1
+#                        /usr/lib/command-not-found -- ${1+"$1"} && :
+#                }
+#        fi
+#fi
+####################
 # GoLang
 export GOROOT=/home/uf4q/.go
 export PATH=$GOROOT/bin:$PATH

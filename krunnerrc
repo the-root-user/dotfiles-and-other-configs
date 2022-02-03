@@ -1,0 +1,41 @@
+[General]
+FreeFloating=false
+HistoryEnabled=true
+RetainPriorSearch=true
+history=define gratitude,kr,color,wine,pla,lut,idle,emoji,kw,webh,snap,time,app,pc,spa,thu,guix,hexc,pid,qua,speed,kwri,rh,kv,kvant,dis,fire,latte,files,chee,chr,en,nauti,d,colo,vl,ren,konq,dolph,burp,kc,cal,kto,not,dolp,re,grub,kala,kmo,dictionary
+
+[Plugins]
+CharacterRunnerEnabled=true
+DictionaryEnabled=true
+Kill RunnerEnabled=true
+PIM Contacts Search RunnerEnabled=true
+PowerDevilEnabled=true
+Spell CheckerEnabled=true
+baloosearchEnabled=true
+bookmarksEnabled=true
+browsertabsEnabled=true
+calculatorEnabled=true
+desktopsessionsEnabled=true
+installerEnabled=true
+katesessionsEnabled=true
+konsoleprofilesEnabled=true
+krunner_appstreamEnabled=true
+kwinEnabled=true
+locationsEnabled=true
+org.kde.activitiesEnabled=true
+org.kde.datetimeEnabled=true
+org.kde.windowedwidgetsEnabled=true
+org.kde.zanshinEnabled=true
+placesEnabled=true
+plasma-desktopEnabled=true
+recentdocumentsEnabled=true
+servicesEnabled=true
+shellEnabled=true
+unitconverterEnabled=true
+webshortcutsEnabled=true
+windowsEnabled=true
+
+[Runners][CharacterRunner]
+aliases=
+codes=
+triggerWord=$

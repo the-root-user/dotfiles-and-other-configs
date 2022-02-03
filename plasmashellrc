@@ -1,0 +1,61 @@
+[ActionsWidget]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbwAAAACAQAAAQAAAAAAAAAAAAAAAHD/////AAAAgQAAAAAAAAACAAAA+gAAAAEAAAAAAAAAwgAAAAEAAAAAAAAD6AAAAABk
+
+[ConfigDialog]
+eDP-1 Height 1080=487
+eDP-1 Width 1920=692
+
+[DownloadDialog Settings]
+eDP-1 Height 1080=468
+eDP-1 Width 1920=700
+
+[General]
+Number of Actions=0
+
+[KFileDialog Settings]
+Recent Files[$e]=20(1).jpg,file:$HOME/.BurpSuite/BurpSuite.png,file:$HOME/Pictures/night-rain.gif,file:$HOME/Pictures/sci-fi-hud-albu-fullcharger.gif,file:$HOME/Pictures/hud.gif,file:$HOME/Pictures/Motion-graphics-Sin-titulo-3.gif,file:$HOME/Pictures/sci-fi-hud-sea-exploration.gif,file:$HOME/Pictures/cyberpunk-rain-rogue.gif,file:$HOME/Pictures/rainy-night-by-melissagrf-on-deviantart.gif,file:$HOME/Pictures/lofi_digital_art_illustration.jpeg,file:$HOME/Pictures/neon-city-underground.png,file:$HOME/Pictures/neon-city.jpg,file:$HOME/Pictures/coffee_in_rain_by_kirokaze.gif,file:$HOME/Pictures/rain-cyberpunk-2077-nexus.jpg,file:$HOME/Pictures/woman-in-cyberpunk-city_3840x2160.jpg
+Recent URLs[$e]=file:$HOME/.BurpSuite/,file:$HOME/Pictures/,file:$HOME/,file:$HOME/Documents/,file:///media/uf4q/WorkDrive/Wallpapers/Dynamic/,file:///media/uf4q/WorkDrive/Wallpapers/,file:///media/uf4q/WorkDrive/toolies/Linux_Dynamic_Wallpapers/Dynamic_Wallpapers/,file:///media/uf4q/WorkDrive/toolies/plasma5-wallpapers-dynamic/dynamicwallpaper-lakeside-louis-coyle/1080/,file:$HOME/Pictures/dynamicwallpaper-lakeside-louis-coyle/1080/,file:$HOME/Pictures/dynamicwallpaper-lakeside-louis-coyle/4k/,file:$HOME/Desktop/
+iconViewIconSize=43
+listViewIconSize=16
+
+[KPropertiesDialog]
+Virtual-1 Height 768=458
+Virtual-1 Width 1024=410
+eDP-1 Height 1080=482
+eDP-1 Width 1920=524
+
+[Notification Messages]
+really_clear_history=true
+
+[Open-with settings]
+CompletionMode=1
+History=kwr,fire
+
+[PlasmaTransientsConfig]
+PreloadWeight=0
+
+[PlasmaViews][Panel 18]
+alignment=1
+
+[PlasmaViews][Panel 2]
+alignment=132
+panelVisibility=0
+
+[PlasmaViews][Panel 2][Defaults]
+maxLength=1920
+minLength=1920
+offset=0
+thickness=28
+
+[PlasmaViews][Panel 2][Horizontal1920]
+alignment=1
+maxLength=1920
+minLength=1920
+panelVisibility=0
+thickness=28
+
+[ScreenConnectors]
+0=eDP-1
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/desktop-base.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js

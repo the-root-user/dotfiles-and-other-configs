@@ -1,0 +1,16 @@
+[$Version]
+update_info=kscreenlocker.upd:0.1-autolock
+
+[Daemon]
+LockGrace=20
+Timeout=20
+
+[Greeter]
+Theme=com.github.vinceliuice.Layan
+
+[Greeter][LnF][General]
+showMediaControls=false
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=/home/uf4q/Pictures/girl-watching-the-sunset-wallpaper-1920x1080-wallpaper-blur.jpg
+SlidePaths=/home/uf4q/.local/share/wallpapers,/usr/share/wallpapers

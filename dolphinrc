@@ -1,0 +1,76 @@
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC4AAADTPwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAEA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAnAAADTAAAAFMA////AAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAAAQD///8AAAADAAAHDwAAALb8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAAAAAHDwAAAAEA////AAAGUAAAA0wAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+eDP-1 Window-Maximized 1807x1016=true
+eDP-1 Window-Maximized 1920x1080=true
+eDP-1 XPosition=0
+eDP-1 YPosition=64
+
+[CompactMode]
+FontWeight=50
+
+[Desktop Entry]
+DefaultProfile=Profile 3.profile
+
+[DetailsMode]
+FontWeight=50
+
+[General]
+ShowCopyMoveMenu=true
+ShowZoomSlider=false
+Version=200
+ViewPropsTimestamp=2021,11,14,3,37,5
+
+[IconsMode]
+FontWeight=50
+PreviewSize=96
+
+[KFileDialog Settings]
+Recent Files[$e]=Obsidian-0.13.19.AppImage,file:///media/uf4q/WorkDrive/a-note.txt,file:$HOME/.local/share/applications/Obsidian-0.13.19.AppImage
+Recent URLs[$e]=file:$HOME/.local/share/applications/,file:///media/uf4q/WorkDrive/
+listViewIconSize=16
+
+[KPropertiesDialog]
+eDP-1 Height 1016=562
+eDP-1 Height 1080=562
+eDP-1 Height 960=437
+eDP-1 Width 1707=467
+eDP-1 Width 1807=499
+eDP-1 Width 1920=499
+
+[MainWindow]
+MenuBar=Disabled
+RestorePositionForNextInstance=false
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC4AAADjPwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawAAAAAA/////wAAAAIA////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAAzAAADjAAAAFQA////AAAAAQAAAAAAAAAA/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAAAAAAD/////AAAAAgD///8AAAADAAAHDwAAALb8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAAAAAHDwAAAAIA////AAAGxwAAA4wAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+eDP-1 Height 1016=902
+eDP-1 Height 1080=959
+eDP-1 Height 723=589
+eDP-1 Height 960=830
+eDP-1 Width 1288=1288
+eDP-1 Width 1707=1707
+eDP-1 Width 1807=1807
+eDP-1 Width 1920=1920
+eDP-1 Window-Maximized 1707x960=true
+eDP-1 Window-Maximized 1807x1016=true
+eDP-1 Window-Maximized 1920x1080=true
+eDP-1 XPosition=0
+eDP-1 YPosition=56
+
+[Open-with settings]
+CompletionMode=1
+History=playo,lut,gwen,/home/uf4q/.local/share/applications/Obsidian-0.13.19.AppImage,kwr,wps,gnu,eng,fire,gwe
+
+[PlacesPanel]
+IconSize=22
+
+[PreviewSettings]
+Plugins=audiothumbnail,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,opendocumentthumbnail,gsthumbnail,svgthumbnail,ffmpegthumbs,webarchivethumbnail
+
+[Search]
+Location=Everywhere
+
+[SettingsDialog]
+eDP-1 Height 1016=557
+eDP-1 Height 1080=398
+eDP-1 Width 1807=667
+eDP-1 Width 1920=634

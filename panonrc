@@ -1,0 +1,21 @@
+[General]
+FPS: 40
+
+[Visual Effects]
+Effect: glowbar
+opacity: {"alpha channel":10,"color":#4f0a62}
+height_ratio: 0.85
+glow_radius: 20
+bar_strength: 12
+glow_strength: 1.1
+glow_strength2: 1.6
+
+[Back-end]
+Back-end: PulseAudio
+Input device: Monitor of Built-in Audio Analog Stereo
+Reduce weight of bass = True
+Audio Frequency: 0 to 1800Hz with lower latency
+
+[Colors]
+Hue from: 230
+Hue to: 320

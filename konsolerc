@@ -1,0 +1,28 @@
+[Desktop Entry]
+DefaultProfile=Profile 3.profile
+
+[Favorite Profiles]
+Favorites=
+
+[KFileDialog Settings]
+Recent Files[$e]=dear-3.jpg,file:$HOME/Pictures/Bonny-Star Wallpaper-With Logo.png,file:$HOME/Pictures/410230.jpg,file:$HOME/Pictures/Cyberpunk-Night-Rain.jpg,file:$HOME/Pictures/neon-city.jpg,file:$HOME/Pictures/AC-Altair.jpg,file:$HOME/Pictures/Cyberpunk-HD-Wallpaper.jpg,file:$HOME/Pictures/dear-3.jpg
+Recent URLs[$e]=file:$HOME/Pictures/,file:$HOME/
+iconViewIconSize=92
+listViewIconSize=61
+
+[MainWindow]
+State=AAAA/wAAAAD9AAAAAAAAB4AAAAOdAAAABAAAAAQAAAAIAAAACPwAAAAA
+ToolBarsMovable=Disabled
+eDP-1 Height 1016=586
+eDP-1 Height 1080=959
+eDP-1 Width 1807=1201
+eDP-1 Width 1920=1920
+eDP-1 Window-Maximized 1707x960=true
+eDP-1 Window-Maximized 1807x1016=true
+eDP-1 Window-Maximized 1920x1080=true
+eDP-1 XPosition=0
+eDP-1 YPosition=56
+
+[Notification Messages]
+CloseAllTabs=true
+ShowPasteHugeTextWarning=false
