@@ -1,10 +1,27 @@
 # Export $PATH
-export PATH=/usr/local/bin:/usr/bin:/bin:~/.cargo/bin:~/go/bin:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:~/.cargo/bin:~/go/bin:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:$PATH
 # some vars
-#_newline=$'\n'
-#_lineup=$'\e[1A'
-#_linedown=$'\e[1B'
-# COM= $(if [ $? = 0 ];then echo -e '✘' ; fi)
+_newline=$'\n'
+_lineup=$'\e[1A'
+_linedown=$'\e[1B'
+# cmd='' #cmd_s=%f%F{green}✔
+# cmd_f=%f%F{red}✘
+# if [ "$?" -ne 0 ];then cmd=$cmd_f ; fi
+ip_tun="$(ip addr | grep tun0 | grep -v inet6 | grep inet | cut -d '/' -f 1 | cut -d 't' -f 2) "
+ip_eth="$(ip addr | grep eth0 | grep -v inet6 | grep inet | cut -d '/' -f 1 | cut -d 't' -f 2) "
+ip_wlan="$(ip addr | grep -E 'wlan0|wlp' | grep -v inet6 | grep inet | cut -d '/' -f 1 | cut -d 't' -f 2) "
+ip_lo=" 127.0.0.1 "
+
+ip_address=$ip_tun
+if [ $ip_address = ' ' ]; then
+        ip_address=$ip_eth
+        if [ $ip_address = ' ' ]; then
+                ip_address=$ip_wlan
+                if [ $ip_address = ' ' ]; then
+                        ip_address=$ip_lo;
+                fi
+        fi
+fi
 
 # Prompt
 prompt_symbol=%f%F{cyan}㉿
@@ -12,16 +29,13 @@ symbol=%f%F{cyan}$
 if [ "$EUID" -eq 0 ]; then prompt_symbol=%f%F{red}㉿; symbol=%f%F{red}#; fi
 user_name=%f%F{blue}$USER
 if [ "$USER" = "root" ]; then user_name=%f%F{white}root; fi
-PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"$'\n'"%f%F{red}└""%f%F{red}─╼ $symbol%f"
-# Prompt
-# prompt_symbol=%f%F{cyan}㉿
-# symbol=%f%F{cyan}$
-# if [ "$EUID" -eq 0 ]; then prompt_symbol=%f%F{red}㉿; symbol=%f%F{red}#; fi
-# user_name=%f%F{blue}$USER
-# if [ "$USER" = "root" ]; then user_name=%f%F{white}root; fi
-# execution_status=%f%F{green}✔
-# if [ "$(echo $?)" -ne 0 ]; then execution_status=%f%F{red}✘; fi
-# PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"$'\n'"%f%F{red}└(""$execution_status""%f%F{red})─╼ $symbol%f"
+PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"
+RPROMPT="%f%F{red}[%f%F{white}$ip_address%f%F{red}]-[%f%F{magenta}%D{ %L:%M:%S %p }%f%F{red}]"
+# RPROMPT=${_lineup}"%f%F{cyan}[%D{ %L:%M:%S %p }]"${_linedown}
+PROMPT+=${_newline}"%f%F{red}└""%f%F{red}─╼ $symbol%f"
+
+
+# PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"${_newline}"%f%F{red}└(""$execution_status""%f%F{red})─╼ $symbol%f"
 # looks nice with black 
 
 #PROMPT="%f%F{cyan}[%D{ %l:%M:%S %p }]"
@@ -51,13 +65,34 @@ greet2(){
 }
 figlet " Parrot OS" | lolcat -8S 16
 #greet2
-echo -en "─[$(greet2)"
+#echo -en "\033[35m░▒▓["
+echo -en "\033[35m══["
+echo -en "$(greet2)"
 # echo "]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ $(date) ]──" | lolcat -F 0.1
-echo "]───────────────────(^-^)────────────────────[ $(date) ]──" | lolcat -F 0.1
-#echo "--------------------------------------------------------------------------------------------------------------------------------------"______________________________________________________________________________________________________________________________________"──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"
+echo "]═════════════════(_)═════════════════[ $(date|cut -d '+' -f 1)]═══" | lolcat -F 0.1
+#echo "]■■■■■■■■■■■■■■■■■■■■(_)■■■■■■■■■■■■■■■■■■■■[ $(date) ]▓▒░" | lolcat -F 0.1
+#echo ﯎_﯎    "--------------------------------------------------------------------------------------------------------------------------------------"______________________________________________________________________________________________________________________________________"──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"
+#▒▒▒▒ ▒▒ 
+#▒▒ ■ ▒▒ 
+#▒▒ ▒▒▒▒ 
+#░▒▓██ ██▓▒░
+#██▓▒░██▓▒░██▓▒░██▓▒░██▓▒░██▓▒░██▓▒░██
+#■■■■■■■■■■
+#▬▬▬▬▬▬▬▬▬▬
+#••••••••••
 }
 true_greet
-# alias
+ips(){
+        echo "  lhost:$ip_lo"; echo "    eth:$ip_eth"; echo "   wlan:$ip_wlan"; echo "    tun:$ip_tun"
+}
+ips2(){
+        ip addr | grep -v inet6 | grep inet | cut -d '/' -f 1
+}
+pingy(){
+	host=$1; out=$(ping -c $host | tail -1 | awk '{print $4}'| cut -d '/' -f 2| cut -d '.' -f 1) && if [ "$out" = "" ]; then  echo "Network is Down"; else  echo "Ping time: $out ms";fi
+}
+
+# aliases
 alias ls='ls -h --color=auto'
 alias ip='ip --color=auto'
 alias dir='dir --color=auto'
@@ -81,6 +116,8 @@ alias fucking='sudo'
 alias history='history 0'
 alias tree='tree -hC'
 alias bat='batcat'
+alias john-rockyou='john --wordlist=/usr/share/wordlists/rockyou.txt'
+
 # get coloured man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -99,6 +136,10 @@ export LESS_TERMCAP_us=$'\e[1;4;31m'
 # Jobs: Fish-like suggestion for command history
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# Fish like syntax highlighting
+# Requires "zsh-syntax-highlighting" from apt
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -118,6 +159,7 @@ zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 #zstyle ':autocomplete:tab:*' insert-unambiguous yes
 zstyle ':autocomplete:tab:*' widget-style menu-select
+zstyle ':autocomplete:*' min-input 1
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 bindkey $key[Up] up-line-or-history
@@ -125,9 +167,6 @@ bindkey $key[Down] down-line-or-history
 
 
 ##################################################
-# Fish like syntax highlighting
-# Requires "zsh-syntax-highlighting" from apt
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Save type history for completion and easier life
 HISTFILE=~/.zsh_history
@@ -138,33 +177,32 @@ setopt appendhistory
 # Useful alias for benchmarking programs
 # require install package "time" sudo apt install time
 # alias time="/usr/bin/time -f '\t%E real,\t%U user,\t%S sys,\t%K amem,\t%M mmem'"
+
 # Display last command interminal
 echo -en "\e]2;Parrot Terminal\a"
 preexec () { print -Pn "\e]0;$1 - Parrot Terminal\a" }
 
 # This script will look-up command in the database and suggest
 # installation of packages available from the repository
-#if [[ -x /usr/lib/command-not-found ]] ; then
-#        if (( ! ${+functions[command_not_found_handler]} )) ; then
-#                function command_not_found_handler {
-#                        [[ -x /usr/lib/command-not-found ]] || return 1
-#                        /usr/lib/command-not-found -- ${1+"$1"} && :
-#                }
-#        fi
-#fi
+if [[ -x /usr/lib/command-not-found ]] ; then
+       if (( ! ${+functions[command_not_found_handler]} )) ; then
+               function command_not_found_handler {
+                       [[ -x /usr/lib/command-not-found ]] || return 1
+                       /usr/lib/command-not-found -- ${1+"$1"} && :
+               }
+       fi
+fi
+
 ####################
+# Golang vars
+# export GOROOT=/usr/local/go
+# export GOPATH=$HOME/go
+# export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
+
 # GoLang
 export GOROOT=/home/uf4q/.go
 export PATH=$GOROOT/bin:$PATH
 export GOPATH=/home/uf4q/go
 export PATH=$GOPATH/bin:$PATH
 
-# Golang vars
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
 
-# Golang vars
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
