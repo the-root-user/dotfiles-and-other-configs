@@ -1,5 +1,18 @@
+# # # # # # # # # # # # # # # # # # #
+#                                   #
+#         zshrc of                  #
+#                                   #
+#        ┏━┓╻┏━╸┏┓╻┏━┓┏━┓┏━╸        #
+#        ┗━┓┃┃╺┓┃┗┫┃ ┃┣┳┛┣╸         #
+#        ┗━┛╹┗━┛╹ ╹┗━┛╹┗╸┗━╸        #
+#                                   #
+# # # # # # # # # # # # # # # # # # #
+
 # Export $PATH
 export PATH=/usr/local/bin:/usr/bin:/bin:~/.cargo/bin:~/go/bin:~/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/snap/bin:$PATH
+# put this in /etc/zsh/zprofile
+# emulate sh -c 'source /etc/profile.d/apps-bin-path.sh'
+#
 # some vars
 _newline=$'\n'
 _lineup=$'\e[1A'
@@ -24,16 +37,25 @@ if [ $ip_address = ' ' ]; then
 fi
 
 # Prompt
-prompt_symbol=%f%F{cyan}㉿
-symbol=%f%F{cyan}$
+# prompt_symbol=%f%F{cyan}㉿
+prompt_symbol=%f%F{yellow}㉿
+# symbol=%f%F{cyan}$
+symbol=%f%F{yellow}$
 if [ "$EUID" -eq 0 ]; then prompt_symbol=%f%F{red}㉿; symbol=%f%F{red}#; fi
 user_name=%f%F{blue}$USER
 if [ "$USER" = "root" ]; then user_name=%f%F{white}root; fi
-PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"
-RPROMPT="%f%F{red}[%f%F{white}$ip_address%f%F{red}]-[%f%F{magenta}%D{ %L:%M:%S %p }%f%F{red}]"
-# RPROMPT=${_lineup}"%f%F{cyan}[%D{ %L:%M:%S %p }]"${_linedown}
+
+# Prompt with Red color in major
+PROMPT="%F{red}┌─[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%F{blue}%d%f%F{red}] %(?..✘ %?)"
+# RPROMPT="%f%F{red}[%f%F{white}$ip_address%f%F{red}]-[%f%F{magenta}%D{ %L:%M:%S %p }%f%F{red}]"
+## RPROMPT=${_lineup}"%f%F{cyan}[%D{ %L:%M:%S %p }]"${_linedown}
 PROMPT+=${_newline}"%f%F{red}└""%f%F{red}─╼ $symbol%f"
 
+# Prompt with Green color in major
+# PROMPT="%F{green}┌[%f%F{red}%f%F{green}]─%F{green}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{green}]─[%f%F{blue}%d%f%F{green}]"
+RPROMPT="%f%F{green}[%f%F{white}$ip_address%f%F{green}]-[%f%F{magenta}%D{ %L:%M:%S %p }%f%F{green}]"
+# RPROMPT=${_lineup}"%f%F{cyan}[%D{ %L:%M:%S %p }]"${_linedown}
+# PROMPT+=${_newline}"%f%F{green}└""%f%F{green}─╼ $symbol%f"
 
 # PROMPT="%F{red}┌[%f%F{magenta}%f%F{red}]─%F{red}[$user_name$prompt_symbol%f%F{magenta}%m%f%F{red}]─[%f%F{blue}%d%f%F{red}]"${_newline}"%f%F{red}└(""$execution_status""%f%F{red})─╼ $symbol%f"
 # looks nice with black 
@@ -56,44 +78,79 @@ PROMPT+=${_newline}"%f%F{red}└""%f%F{red}─╼ $symbol%f"
 true_greet(){
 # Greeting
 greet(){
-	if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -e "\033[34m   Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -e "\033[35m   Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -e "\033[37m   Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -e "\033[33m  滛 After Noon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -e "\033[35m  滋 Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -e "\033[34m   Night $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -e "\033[34m  望 Late Night $USER "; fi #    滛 滋  望 歹 摒 敖 履
-	#date "+    %l:%M %p"
+    if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -e "\033[34m   Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -e "\033[35m   Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -e "\033[37m   Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -e "\033[33m  滛 After Noon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -e "\033[35m  滋 Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -e "\033[34m   Night $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -e "\033[34m  望 Late Night $USER "; fi #    滛 滋  望 歹 摒 敖 履
+    #date "+    %l:%M %p"
 }
 greet2(){
-	if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -ne "\033[34m  Its Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -ne "\033[35m  Morning  $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -ne "\033[37m  Its Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -ne "\033[33m 滛LateNoon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -ne "\033[35m 滋Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -ne "\033[34m  ItsNight $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -ne "\033[34m 望LateNight $USER "; fi #    滛 滋  望 歹 摒 敖 履
-	#date "+    %l:%M %p"
+    if [[ $(date +%H) -ge 3 && $(date +%H) -lt 6 ]]; then	echo -ne "\033[34m  Its Dawn $USER "; elif [[ $(date +%H) -ge 6 && $(date +%H) -lt 9 ]]; then	echo -ne "\033[35m  Morning $USER "; elif [[ $(date +%H) -ge 9 && $(date +%H) -lt 13 ]]; then	echo -ne "\033[37m  Its Noon $USER "; elif [[ $(date +%H) -ge 13 && $(date +%H) -lt 17 ]]; then	echo -ne "\033[33m 滛LateNoon $USER "; elif [[ $(date +%H) -ge 17 && $(date +%H) -lt 20 ]]; then	echo -ne "\033[35m 滋Evening $USER "; elif [[ $(date +%H) -ge 20 && $(date +%H) -lt 23 ]]; then	echo -ne "\033[34m  ItsNight $USER "; elif [[ $(date +%H) -ge 23 || $(date +%H) -lt 3 ]]; then	echo -ne "\033[34m 望LateNight $USER "; fi #    滛 滋  望 歹 摒 敖 履
+    #date "+    %l:%M %p"
 }
 figlet " Parrot OS" | lolcat -8S 16
 #greet2
-#echo -en "\033[35m░▒▓["
 echo -en "\033[35m══["
 echo -en "$(greet2)"
 # echo "]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ $(date) ]──" | lolcat -F 0.1
-echo "]═════════════════(_)═════════════════[ $(date|cut -d '+' -f 1)]═══" | lolcat -F 0.1
-#echo "]■■■■■■■■■■■■■■■■■■■■(_)■■■■■■■■■■■■■■■■■■■■[ $(date) ]▓▒░" | lolcat -F 0.1
-#echo ﯎_﯎    "--------------------------------------------------------------------------------------------------------------------------------------"______________________________________________________________________________________________________________________________________"──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────"
+echo "]══════════════════(_)══════════════════[ $(date +%c) ]══" | lolcat -F 0.1
+echo " "
+#echo ﯎_﯎    
+# ------------------ __________________ ────────────────── ■■■■■■■■■■■■■■■■■■ ══════════════════ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ••••••••••••••••••
 #▒▒▒▒ ▒▒ 
 #▒▒ ■ ▒▒ 
 #▒▒ ▒▒▒▒ 
 #░▒▓██ ██▓▒░
-#██▓▒░██▓▒░██▓▒░██▓▒░██▓▒░██▓▒░██▓▒░██
-#■■■■■■■■■■
-#▬▬▬▬▬▬▬▬▬▬
-#••••••••••
 }
+
 true_greet
+
+copy(){
+    start=`date +%s`; cp $1 $2 $3; end=`date +%s`
+    runtime=$((end-start)); echo "Command executed in $runtime seconds"
+}
+unshort(){
+    curl -k -v -I $1 2>&1 | grep -i "< location" | cut -d " " -f 3
+}
 ips(){
-        echo "  lhost:$ip_lo"; echo "    eth:$ip_eth"; echo "   wlan:$ip_wlan"; echo "    tun:$ip_tun"
+    echo "  lhost:$ip_lo"; echo "    eth:$ip_eth"; echo "   wlan:$ip_wlan"; echo "    tun:$ip_tun"
 }
 ips2(){
-        ip addr | grep -v inet6 | grep inet | cut -d '/' -f 1
+    ip addr | grep -v inet6 | grep inet | cut -d '/' -f 1
 }
 pingy(){
-	host=$1; out=$(ping -c $host | tail -1 | awk '{print $4}'| cut -d '/' -f 2| cut -d '.' -f 1) && if [ "$out" = "" ]; then  echo "Network is Down"; else  echo "Ping time: $out ms";fi
+    out=$(echo "$@" | xargs ping -c 4 | tail -1 | awk '{print $4}'| cut -d '/' -f 2| cut -d '.' -f 1) && if [ "$out" = "" ]; then  echo "Network is Down"; else  echo "Ping time: $out ms ";fi
+}
+cpu_use(){
+    cpu_idle=$(top -b -n 1 | grep Cpu | awk '{print $8}'|cut -f 1 -d "."); cpu_use=$(expr 100 - $cpu_idle); if [ "$cpu_use" = "" ]; then cpu_use="0";fi; echo " $cpu_use% "
+}
+mem_use(){
+    mem_used=$(free -m | grep "Mem" | awk '{print $3}'); echo " $mem_used MB "
+}
+cpu_temp(){
+    out=$(sensors | grep CPU | cut -d '+' -f 2 | cut -d '.' -f 1); if [ $out -ge 80 ]; then echo -e "\033[31m   $out°C"; elif [ $out -ge 60 ]; then echo -e "\033[33m   $out°C "; else echo " $out°C  ";fi
+    # if [ $out -ge 80 ]; then echo " $out°C  "; elif [ $out -ge 60 ]; then echo " $out°C  "; else echo " $out°C  ";fi
+}
+status(){
+    echo "\033[0m Current System Status: \033[0m"; echo -n "  $(cpu_use)"; echo -n "  $(mem_use)"; echo "  $(cpu_temp)"
+}
+disk_usage(){
+    lsblk -o NAME,FSTYPE,LABEL,FSAVAIL,FSUSE%,MOUNTPOINT | grep -v loop
+    #echo " NAME   USE   AVAIL"; lsblk -f -T=UUID | grep sd | grep % | awk '{print " "$1"   "$6"   "$5}'
+}
+
+function base64-decode() {
+    echo "$@" | base64 -d
+}
+function hex-encode() {
+    echo "$@" | xxd -p
+}
+function hex-decode() {
+    echo "$@" | xxd -p -r
+}
+function rot13() {
+    echo "$@" | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 }
 
 # aliases
-alias ls='ls -h --color=auto'
+alias ls='ls -h --group-directories-first --color=auto'
 alias ip='ip --color=auto'
 alias dir='dir --color=auto'
 alias diff='diff --color=auto'
@@ -102,21 +159,35 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 # some more aliases
+alias l='ls -CF'
 alias ll='ls -lh'
 alias la='ls -hA'
-alias l='ls -CF'
-alias lc='colorls'
+alias lla='l -al'
+alias lc='lscolors'
+# alias ...='../..'
+# alias ....='../../..'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias clear='clear && true_greet'
 alias em='emacs -nw'
 alias dd='dd status=progress'
 alias _='sudo'
 alias _i='sudo -i'
 alias please='sudo'
-alias fucking='sudo'
+# alias fucking='sudo'
 alias history='history 0'
+alias watch='watch -n 1'
 alias tree='tree -hC'
+alias du='du -h'
 alias bat='batcat'
+alias bat-np='bat --paging never'
 alias john-rockyou='john --wordlist=/usr/share/wordlists/rockyou.txt'
+alias http-server='python -m http.server'
+alias aslr_check='cat /proc/sys/kernel/randomize_va_space'
+alias aslr_off='echo 0 | sudo tee /proc/sys/kernel/randomize_va_space'
+alias aslr_perm_off='echo kernel.randomize_va_space=0 | sudo tee -a /etc/sysctl.conf && sysctl -p'
+
 
 # get coloured man pages
 export LESS_TERMCAP_mb=$'\e[1;32m'
@@ -143,6 +214,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Use modern completion system
 autoload -Uz compinit
 compinit
+#_comp_options+=(globdots)
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -162,21 +234,43 @@ zstyle ':autocomplete:tab:*' widget-style menu-select
 zstyle ':autocomplete:*' min-input 1
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# bindkeys
 bindkey $key[Up] up-line-or-history
 bindkey $key[Down] down-line-or-history
-
+# alt+<- | alt+->
+#bindkey "^[f" forward-word
+#bindkey "^[b" backward-word
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
+# ctrl+<- | ctrl+->
+#bindkey "^[[1;5D" backward-word
+#bindkey "^[[1;5C" forward-word
 
 ##################################################
 
 # Save type history for completion and easier life
-HISTFILE=~/.zsh_history
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=20000
-SAVEHIST=20000
-setopt appendhistory
+SAVEHIST=$HISTSIZE
+#setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+#setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+#setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+#setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+#setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+#setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+#setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 
 # Useful alias for benchmarking programs
 # require install package "time" sudo apt install time
 # alias time="/usr/bin/time -f '\t%E real,\t%U user,\t%S sys,\t%K amem,\t%M mmem'"
+# alias time="/usr/bin/time -f '%S'"
 
 # Display last command interminal
 echo -en "\e]2;Parrot Terminal\a"
@@ -195,14 +289,6 @@ fi
 
 ####################
 # Golang vars
-# export GOROOT=/usr/local/go
-# export GOPATH=$HOME/go
-# export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
-
-# GoLang
-export GOROOT=/home/uf4q/.go
-export PATH=$GOROOT/bin:$PATH
-export GOPATH=/home/uf4q/go
-export PATH=$GOPATH/bin:$PATH
-
-
+#export GOROOT=$HOME/.go
+#export GOPATH=$HOME/go
+#export PATH=$GOPATH/bin:$GOROOT/bin:$HOME/.local/bin:$PATH
