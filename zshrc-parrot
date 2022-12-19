@@ -86,25 +86,26 @@ greet2(){
     #date "+    %l:%M %p"
 }
 figlet " Parrot OS" | lolcat -8S 16
-#greet2
+# greet2
 echo -en "\033[35m══["
 echo -en "$(greet2)"
 # echo "]─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ $(date) ]──" | lolcat -F 0.1
 echo "]══════════════════(_)══════════════════[ $(date +%c) ]══" | lolcat -F 0.1
 echo " "
-#echo ﯎_﯎    
+# echo ﯎_﯎    
 # ------------------ __________________ ────────────────── ■■■■■■■■■■■■■■■■■■ ══════════════════ ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ ••••••••••••••••••
-#▒▒▒▒ ▒▒ 
-#▒▒ ■ ▒▒ 
-#▒▒ ▒▒▒▒ 
-#░▒▓██ ██▓▒░
+# ▒▒▒▒ ▒▒
+# ▒▒ ■ ▒▒
+# ▒▒ ▒▒▒▒
+# ░▒▓██ ██▓▒░
 }
 
 true_greet
 
 copy(){
-    start=`date +%s`; cp $1 $2 $3; end=`date +%s`
-    runtime=$((end-start)); echo "Command executed in $runtime seconds"
+    start=`date +%s`; cp $1 $2 $3 2> /dev/null; end=`date +%s`
+    # runtime=$((end-start)); echo "Command executed in $runtime seconds"
+    runtime=$((end-start)); minute=$((runtime/60)); second=$((runtime%60)); echo "Command executed in $minute minutes and $second seconds"
 }
 unshort(){
     curl -k -v -I $1 2>&1 | grep -i "< location" | cut -d " " -f 3
@@ -131,9 +132,15 @@ cpu_temp(){
 status(){
     echo "\033[0m Current System Status: \033[0m"; echo -n "  $(cpu_use)"; echo -n "  $(mem_use)"; echo "  $(cpu_temp)"
 }
-disk_usage(){
+file_system_usage(){
     lsblk -o NAME,FSTYPE,LABEL,FSAVAIL,FSUSE%,MOUNTPOINT | grep -v loop
     #echo " NAME   USE   AVAIL"; lsblk -f -T=UUID | grep sd | grep % | awk '{print " "$1"   "$6"   "$5}'
+}
+file_system_usage2(){
+    df -h | grep -v -E "(loop|tmp|udev)"
+}
+disk_usage(){
+    du -h --max-depth=1 $1 | sort -h
 }
 
 function base64-decode() {
@@ -178,14 +185,16 @@ alias please='sudo'
 # alias fucking='sudo'
 alias history='history 0'
 alias watch='watch -n 1'
-alias tree='tree -hC'
+#alias tree='tree -h'
 alias du='du -h'
 alias bat='batcat'
 alias bat-np='bat --paging never'
+alias ccat='bat --decorations never --paging never'
 alias john-rockyou='john --wordlist=/usr/share/wordlists/rockyou.txt'
 alias http-server='python -m http.server'
 alias aslr_check='cat /proc/sys/kernel/randomize_va_space'
 alias aslr_off='echo 0 | sudo tee /proc/sys/kernel/randomize_va_space'
+alias aslr_on='echo 1 | sudo tee /proc/sys/kernel/randomize_va_space'
 alias aslr_perm_off='echo kernel.randomize_va_space=0 | sudo tee -a /etc/sysctl.conf && sysctl -p'
 
 
