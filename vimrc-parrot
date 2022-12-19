@@ -1,0 +1,92 @@
+"""""""""""""""""""""""""""""""""""""
+"
+"    Pre-defined settings by NVim
+"
+"""""""""""""""""""""""""""""""""""""
+
+set shiftwidth=2
+"Enable mouse click for nvim
+set mouse=a
+"Fix cursor replacement after closing nvim
+set guicursor=
+"Shift + Tab does inverse tab
+inoremap <S-Tab> <C-d>
+
+"See invisible characters
+set list listchars=tab:>\ ,trail:+
+"set list listchars=tab:>\ ,trail:+,eol:$
+
+"wrap to next line when end of line is reached
+set whichwrap+=<,>,[,]
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
+"               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
+"               ██║   ██║██║██╔████╔██║██████╔╝██║
+"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
+"                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
+"                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Disable compatibility with vi which can cause unexpected issues.
+set nocompatible
+
+"Vola!
+set number
+syntax on
+colorscheme peachpuff
+set cursorline
+"set cursorcolumn
+
+"colorscheme one
+"set background=dark " for the dark version
+" set background=light " for the light version
+"let g:one_allow_italics = 1 " I love italic for comments
+
+"Set shift width to 4 spaces.
+set shiftwidth=4
+"Set tab width to 4 columns.
+set tabstop=4
+set expandtab "expand tab to whitespaces
+set softtabstop=4 "remove 4 spaces with single backspace
+
+
+set autoindent
+
+"Do not save backup files.
+set nobackup
+"Ignore capital letters during search.
+set ignorecase
+"Show partial command you type in the last line of the screen.
+set showcmd
+"Show the mode you are on the last line.
+set showmode
+
+"Enable auto completion menu after pressing TAB.
+set wildmenu
+"Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+"There are certain files that we would never want to edit with Vim.
+"Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+
+
+" STATUS LINE ------------------------------------------------------------ {{{
+
+"Clear status line when vimrc is reloaded.
+set statusline=
+"Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+"Use a divider to separate the left side from the right side.
+set statusline+=%=
+"Status line right side.
+"set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+set statusline+=\ row:\ %l\ col:\ %c\ percent:\ %p%%
+"Show the status on the second to last line.
+set laststatus=2
+" ----------------------------- }}}
+
